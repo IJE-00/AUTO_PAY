@@ -45,6 +45,8 @@ if(isset($_POST['login'])){
     <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="...font-awesome...">
     </head>
 
     <body>
@@ -142,8 +144,25 @@ body{
     z-index: 20; 
 }
 #logo{
-    width:200px;
-    margin-bottom:10px;
+    width: clamp(100px, 25vw, 200px); 
+    height: auto;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px){
+    #logo-box{
+        top: 10px;
+        left: 10px;
+    }
+
+    #login-container{
+        width: 90%;          /* imbes na fixed 500px */
+        margin-top: 80px;    /* para hindi matakpan ng logo */
+    }
+
+    h1{
+        font-size: 28px;     /* mas maliit sa phone */
+    }
 }
 
 /* title */
