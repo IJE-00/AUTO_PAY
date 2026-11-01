@@ -71,11 +71,11 @@ if(isset($_POST['logout'])){
 }
 
 body{
-    min-height:100vh;          /* imbes na height */
+    min-height:100vh;          
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow-x:hidden;         /* imbes na overflow:hidden, para pwedeng mag-scroll pababa sa phone */
+    overflow-x:hidden;        
     background: url('../background.jpg') no-repeat center center/cover;
     background-attachment: fixed;
 }
@@ -191,7 +191,7 @@ a:hover {
 
 @media (max-width: 900px){
     #container{
-        flex-direction: column;   /* title sa taas, buttons sa baba */
+        flex-direction: column;   
         gap: 30px;
         padding: 0 15px;
     }
@@ -204,7 +204,7 @@ a:hover {
     }
 
     body{
-        padding-top: 100px;       /* para hindi matakpan ng logo ang title */
+        padding-top: 100px;       
         padding-bottom: 30px;
         align-items: flex-start;
     }
