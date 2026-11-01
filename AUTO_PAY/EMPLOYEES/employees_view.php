@@ -41,6 +41,7 @@ if(isset($_POST['logout'])){
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -70,12 +71,13 @@ if(isset($_POST['logout'])){
 }
 
 body{
-    height:100vh;
+    min-height:100vh;         
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    overflow-x:hidden;         
     background: url('../background.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
 }
 
 /* dark overlay */
@@ -114,7 +116,8 @@ body::before{
 }
 
 #logo{
-    width: 200px; 
+    width: clamp(100px, 25vw, 200px);
+    height: auto;
 }
 
 
@@ -126,8 +129,9 @@ a{
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align:center;
     
-    font-size: 75px; 
+    font-size: clamp(36px, 8vw, 75px);
     font-family:Copperplate, "Copperplate Gothic Light", fantasy;
     font-weight: bold;
     background: linear-gradient(to right, #1865f3, #82a9ed);
@@ -151,8 +155,11 @@ a:hover {
     border-radius:20px;
     border:1px solid rgba(255,255,255,0.3);
 
-    height: 400px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;          
+    height: auto;
+    min-height: 400px;         
+    padding: 30px 20px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -182,5 +189,29 @@ a:hover {
     transform:translateY(-5px);
 }
 
+@media (max-width: 900px){
+    #container{
+        flex-direction: column;   
+        gap: 30px;
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 600px){
+    #logo-box{
+        top: 10px;
+        left: 10px;
+    }
+
+    body{
+        padding-top: 100px;       
+        padding-bottom: 30px;
+        align-items: flex-start;
+    }
+
+    #buttons{
+        min-height: auto;
+    }
+}
     
 </style>
