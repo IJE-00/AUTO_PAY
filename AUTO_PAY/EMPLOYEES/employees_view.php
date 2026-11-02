@@ -71,19 +71,19 @@ if(isset($_POST['logout'])){
 }
 
 body{
-<<<<<<< HEAD
+
     min-height:100vh;          
     display:flex;
     align-items:center;
     justify-content:center;
     overflow-x:hidden;        
-=======
+
     min-height:100vh;         
     display:flex;
     align-items:center;
     justify-content:center;
     overflow-x:hidden;         
->>>>>>> main
+
     background: url('../background.jpg') no-repeat center center/cover;
     background-attachment: fixed;
 }
@@ -164,15 +164,15 @@ a:hover {
     border:1px solid rgba(255,255,255,0.3);
 
     width: 100%;
-<<<<<<< HEAD
-    max-width: 400px;          /* imbes na width: 400px */
-    height: auto;
-    min-height: 400px;         /* imbes na height: 400px */
-=======
+
     max-width: 400px;          
     height: auto;
     min-height: 400px;         
->>>>>>> main
+
+    max-width: 400px;          
+    height: auto;
+    min-height: 400px;         
+
     padding: 30px 20px;
     align-items: center;
     justify-content: center;
