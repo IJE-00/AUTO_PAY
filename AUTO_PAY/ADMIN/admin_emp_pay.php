@@ -156,6 +156,7 @@ if (isset($_POST['back'])) {
 </div>
 </form>
 
+
     <!-- SCROLLABLE TABLE -->
 <div class="table-scroll">
     <table>
@@ -223,11 +224,11 @@ body{
     height: 150px;
     width: 200px;
     margin-top: 20px;
-    margin-left: clamp(20px, 8vw, 250px);
+    margin-left: 250px;
     background-image: linear-gradient(to right, #629dfa 0%, #c2e9fb 51%, #629dfa 100%);
     background-size: 200% auto;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 15px;
     border: solid 2px whitesmoke;
     box-shadow: 0 0 20px #eeeeee;
 }
@@ -263,8 +264,8 @@ h1{
 
 label{
     display: inline-block;
-    width: 150px;
-    max-width: 40%;   
+    width: 150px;  
+    max-width: 40%; 
     color: white;
     font-weight: bold;
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
@@ -294,8 +295,8 @@ input[type="text"]{
 }
 
 #logo{
-    width: clamp(60px, 12vw, 100px);
-    height: auto; 
+    width: clamp(60px, 12vw, 100px);  
+    height: auto;
 }
 
 /* BUTTONS */
@@ -320,7 +321,7 @@ button:hover{
 }
 
 #bot{
-    margin-left: 0;                 
+    margin-left: 0;              
     margin-bottom: 20px;
 }
 
@@ -376,12 +377,12 @@ tr:hover{
 
 @media (max-width: 700px){
     body{
-        padding-top: 90px;           /* espasyo para sa logo */
+        padding-top: 90px;          
     }
 
     #header{
         left: 50%;
-        transform: translateX(-50%); /* logo sa gitna ng taas */
+        transform: translateX(-50%); 
     }
 
     h1{
@@ -389,23 +390,27 @@ tr:hover{
     }
 
     #container{
-        flex-direction: column;      /* employee box bababa sa form */
+        flex-direction: column;      
         align-items: center;
     }
 
     #employee-count{
-        margin-left: 0;
-        margin-bottom: 20px;
-        width: 100%;
-        max-width: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 150px;
+        width: 200px;
+        margin-top: 20px;
+        margin-left: clamp(20px, 8vw, 250px);
     }
 
     #row2, #row3, #row4, #row5{
-        flex-wrap: wrap;             /* bababa ang input at button kung masikip */
+        flex-wrap: wrap;             
     }
 
     label{
-        width: 100%;                 /* label sa ibabaw ng input */
+        width: 100%;                
         max-width: 100%;
     }
 
