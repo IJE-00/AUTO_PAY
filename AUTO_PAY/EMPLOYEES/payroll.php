@@ -111,6 +111,7 @@ if (isset($_POST['back'])) {
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -130,93 +131,95 @@ if (isset($_POST['back'])) {
     Mode: <?php echo ($deduction_mode == "none") ? "NO DEDUCTION" : " WITH DEDUCTION"; ?>
     </h3>
 
-    <table>
+    <div class="table-scroll">
+        <table>
 
-        <tr>
-            <th>PAYMENT</th>
-            <th>SSS</th>
-            <th>PHILHEALTH</th>
-            <th>PAG-IBIG</th>
-            <th>MONTH - YEAR</th>
-            <th>DAYS OF WORK</th>
-            <th>TOTAL DAYS PAYMENT</th>
-            <th>NET SALARY</th>
-            <th>STATUS</th>
-        </tr>
+            <tr>
+                <th>PAYMENT</th>
+                <th>SSS</th>
+                <th>PHILHEALTH</th>
+                <th>PAG-IBIG</th>
+                <th>MONTH - YEAR</th>
+                <th>DAYS OF WORK</th>
+                <th>TOTAL DAYS PAYMENT</th>
+                <th>NET SALARY</th>
+                <th>STATUS</th>
+            </tr>
 
-        <?php
-        if($pay && mysqli_num_rows($pay)>0){
+            <?php
+            if($pay && mysqli_num_rows($pay)>0){
 
-            while($rows=mysqli_fetch_assoc($pay)){
-            $daily_pay = $default_payment;
+                while($rows=mysqli_fetch_assoc($pay)){
+                $daily_pay = $default_payment;
 
-                /*DEDUCTION */
-                if($deduction_mode == "none"){
-                    $sss = 0;
-                    $philhealth = 0;
-                    $pagibig = 0;
-                } else {
-                    $sss = $default_sss;
-                    $philhealth = $default_philhealth;
-                    $pagibig = $default_pagibig;
-                }
+                    /*DEDUCTION */
+                    if($deduction_mode == "none"){
+                        $sss = 0;
+                        $philhealth = 0;
+                        $pagibig = 0;
+                    } else {
+                        $sss = $default_sss;
+                        $philhealth = $default_philhealth;
+                        $pagibig = $default_pagibig;
+                    }
 
-                $days=$rows['days'];
-                $cycleDays = (($days - 1) % 15) + 1;
-                $total_days_pay=$daily_pay*$days;
-                $total=$total_days_pay-($sss+$philhealth+$pagibig);
-
-
-                $monthNumber=$rows['month'];
-                $monthName=date("F",mktime(0,0,0,$monthNumber,10));
-        ?>
-
-        <tr>
-            <td align="center"><?php echo $daily_pay; ?></td>
-            <td align="center"><?php echo $sss; ?></td>
-            <td align="center"><?php echo $philhealth; ?></td>
-            <td align="center"><?php echo $pagibig; ?></td>
-
-            <td align="center">
-            <?php echo $monthNumber." - ".$rows['year']; ?>
-            </td>
-
-            <td align="center"><?php echo $cycleDays; ?></td>
-            <td align="center"><?php echo $total_days_pay; ?></td>
-            <td align="center"><?php echo $total; ?></td>
-
-            <td align="center">
-
-            <form method="POST">
-
-                <input type="hidden" name="fullname" value="<?php echo $rows['fullname']; ?>">
-                <input type="hidden" name="payment" value="<?php echo $daily_pay; ?>">
-                <input type="hidden" name="sss" value="<?php echo $sss; ?>">
-                <input type="hidden" name="philhealth" value="<?php echo $philhealth; ?>">
-                <input type="hidden" name="pagibig" value="<?php echo $pagibig; ?>">
-                <input type="hidden" name="days" value="<?php echo $days; ?>">
-                <input type="hidden" name="total_days_pay" value="<?php echo $total_days_pay; ?>">
-                <input type="hidden" name="total_payment" value="<?php echo $total; ?>">
-                <input type="hidden" name="month" value="<?php echo $monthNumber; ?>">
-                <input type="hidden" name="year" value="<?php echo $rows['year']; ?>">
-                <input type="hidden" name="deduction_mode" value="<?php echo $deduction_mode; ?>">
-
-                <button type="submit" name="receipt" id="receive">RECEIVE</button>
+                    $days=$rows['days'];
+                    $cycleDays = (($days - 1) % 15) + 1;
+                    $total_days_pay=$daily_pay*$days;
+                    $total=$total_days_pay-($sss+$philhealth+$pagibig);
 
 
-            </form>
+                    $monthNumber=$rows['month'];
+                    $monthName=date("F",mktime(0,0,0,$monthNumber,10));
+            ?>
 
-            </td>
+            <tr>
+                <td align="center"><?php echo $daily_pay; ?></td>
+                <td align="center"><?php echo $sss; ?></td>
+                <td align="center"><?php echo $philhealth; ?></td>
+                <td align="center"><?php echo $pagibig; ?></td>
 
-        </tr>
-        <?php
-        } 
-        }else{
-            echo "<tr><td colspan='10' style='color:red;text-align:center;'>No payroll data found</td></tr>";
-        }
-        ?>
+                <td align="center">
+                <?php echo $monthNumber." - ".$rows['year']; ?>
+                </td>
 
-    </table>
+                <td align="center"><?php echo $cycleDays; ?></td>
+                <td align="center"><?php echo $total_days_pay; ?></td>
+                <td align="center"><?php echo $total; ?></td>
+
+                <td align="center">
+
+                <form method="POST">
+
+                    <input type="hidden" name="fullname" value="<?php echo $rows['fullname']; ?>">
+                    <input type="hidden" name="payment" value="<?php echo $daily_pay; ?>">
+                    <input type="hidden" name="sss" value="<?php echo $sss; ?>">
+                    <input type="hidden" name="philhealth" value="<?php echo $philhealth; ?>">
+                    <input type="hidden" name="pagibig" value="<?php echo $pagibig; ?>">
+                    <input type="hidden" name="days" value="<?php echo $days; ?>">
+                    <input type="hidden" name="total_days_pay" value="<?php echo $total_days_pay; ?>">
+                    <input type="hidden" name="total_payment" value="<?php echo $total; ?>">
+                    <input type="hidden" name="month" value="<?php echo $monthNumber; ?>">
+                    <input type="hidden" name="year" value="<?php echo $rows['year']; ?>">
+                    <input type="hidden" name="deduction_mode" value="<?php echo $deduction_mode; ?>">
+
+                    <button type="submit" name="receipt" id="receive">RECEIVE</button>
+
+
+                </form>
+
+                </td>
+
+            </tr>
+            <?php
+            } 
+            }else{
+                echo "<tr><td colspan='10' style='color:red;text-align:center;'>No payroll data found</td></tr>";
+            }
+            ?>
+
+        </table>
+    </div>
     <br>
 
     <div id="back_bot">
@@ -237,12 +240,13 @@ if (isset($_POST['back'])) {
 }
 
 body{
-    height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    overflow:hidden;
+    min-height: 100vh;         
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;         
     background: url('../background.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
 }
 
 /* dark overlay */
@@ -272,12 +276,14 @@ h1{
 #contable{
     max-width: 95%;
     margin: auto;
+    padding: 20px 0;
 }
 
 
 /* SCROLL TABLE */
 .table-scroll{
     max-height: 450px;
+    overflow-x: auto; 
     overflow-y: auto;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -337,11 +343,12 @@ tr:hover{
     align-items: center;
     gap: 10px;
 
-    z-index: 20; /* above background */
+    z-index: 20;
 }
 
 #logo{
-    width: 200px; /* adjust size if needed */
+    width: clamp(80px, 20vw, 200px);
+    height: auto; 
 }
 
 /* BUTTON */
@@ -405,6 +412,37 @@ tr:hover{
     background-position: right center;
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 20px #018715;
+}
+
+@media (max-width: 600px){
+    body{
+        align-items: flex-start;
+        padding-top: 100px;       /* espasyo para hindi matakpan ng logo ang title */
+    }
+
+    #logo-box{
+        left: 50%;
+        transform: translateX(-50%);   /* logo sa gitna ng taas */
+        top: 10px;
+    }
+
+    h1{
+        font-size: 26px;
+    }
+
+    #deduct{
+        flex-wrap: wrap;          /* para bumaba ang buttons kung masikip */
+    }
+
+    th{
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    td{
+        font-size: 13px;
+        padding: 8px;
+    }
 }
 
 </style>
