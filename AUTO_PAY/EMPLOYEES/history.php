@@ -70,6 +70,9 @@ if (isset($_POST['search_bar'])) {
 }
 ?>
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <div id="header">
         <img id="logo" src="../logo.png">
@@ -168,11 +171,11 @@ if (isset($_POST['search_bar'])) {
 }
 
 body{
-    height: 100vh;
+    min-height: 100vh; 
     padding: 30px;
-    overflow:hidden;
+    overflow-x: hidden; 
     background: url('../background.jpg') no-repeat center center/cover;
-
+    background-attachment: fixed;
 }
 
 /* dark overlay */
@@ -191,7 +194,7 @@ body::before{
 #header{
     position: absolute;
     top: 10px;
-    left: 150px;
+    left: clamp(10px, 12vw, 150px); 
 
     display: flex;
     align-items: center;
@@ -201,7 +204,8 @@ body::before{
 }
 
 #logo{
-    width: 120px; 
+    width: clamp(70px, 15vw, 120px);  
+    height: auto;
 }
 
 /* TITLE */
@@ -257,6 +261,7 @@ input[type="text"]{
 .table-scroll{
     max-height: 400px;
     overflow-y: auto;
+    overflow-x: auto;
     border-radius: 12px;
     background: white;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -265,6 +270,7 @@ input[type="text"]{
 /* TABLE */
 table{
     width: 100%;
+    min-width: 1100px;   
     border-collapse: collapse;
 }
 
@@ -405,5 +411,45 @@ button:hover{
     margin: 20px auto;
     height: 60px;
     width: 120px;
+}
+
+@media (max-width: 700px){
+    body{
+        padding: 15px;
+        padding-top: 100px;           
+    
+    }
+
+    #header{
+        left: 50%;
+        transform: translateX(-50%);  
+        top: 10px;
+    }
+
+    h2{
+        font-size: 22px;
+    }
+
+    #row1, #row2{
+        flex-direction: column;     
+        align-items: flex-start;
+    }
+
+    #month_m{
+        width: auto;
+    }
+
+    #year_y{
+        margin-left: 0;             
+    }
+
+    input[type="text"]{
+        width: 100%;
+        max-width: 280px;
+    }
+
+    #bot{
+        margin-left: 0;           
+    }
 }
 </style>
