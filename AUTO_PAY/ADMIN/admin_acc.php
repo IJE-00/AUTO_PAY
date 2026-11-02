@@ -1,3 +1,7 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
 <form method="POST">
     <div id="logo-box">
         <img id="logo" src="../logo.png">
@@ -128,7 +132,7 @@ body{
 #logo-box{
     position: absolute;
     top: 10px;
-    left: 200px;
+    left: clamp(10px, 10vw, 200px);   
 
     display: flex;
     align-items: center;
@@ -138,7 +142,8 @@ body{
 }
 
 #logo{
-    width: 120px; 
+    width: clamp(70px, 15vw, 120px);  
+    height: auto;
 }
 
 /* TITLE */
@@ -340,6 +345,27 @@ td:nth-child(3){
     background-position: right center;
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 10px #f30606;
+}
+
+@media (max-width: 600px){
+    body{
+        padding-top: 90px;          
+    }
+
+    #logo-box{
+        left: 50%;
+        transform: translateX(-50%);  
+        top: 10px;
+    }
+
+    h1{
+        font-size: 22px;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        max-width: 250px;
+    }
 }
 
 </style>
