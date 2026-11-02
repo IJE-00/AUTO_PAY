@@ -101,11 +101,11 @@ if(isset($_POST['login'])){
 }
 
 body{
-    height:100vh;
+    min-height: 100vh; 
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    overflow-x: hidden; 
     background: url('../background.jpg') no-repeat center center/cover;
 }
 
@@ -113,7 +113,8 @@ body{
 /* container */
 #login-container{
     position:relative;
-    width:500px;
+    width:100%;
+    max-width: 500px; 
     padding:40px 25px;
     z-index: 10;
 
@@ -150,18 +151,27 @@ body{
 }
 
 @media (max-width: 600px){
+    body{
+        align-items: flex-start;
+        padding: 100px 15px 30px;
+    }
+
     #logo-box{
         top: 10px;
-        left: 10px;
+        left: 50%;
+        transform: translateX(-50%);  
     }
 
     #login-container{
-        width: 90%;          /* imbes na fixed 500px */
-        margin-top: 80px;    /* para hindi matakpan ng logo */
+        margin-top: 0;                 
     }
 
     h1{
-        font-size: 28px;     /* mas maliit sa phone */
+        font-size: 28px;
+    }
+
+    #buttons{
+        flex-wrap: wrap;
     }
 }
 
