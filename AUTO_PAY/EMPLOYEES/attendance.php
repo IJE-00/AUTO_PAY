@@ -299,7 +299,7 @@ tr:hover{
 
 @media (max-width: 1100px){
     #container{
-        flex-direction: column;   /* box ng buttons sa taas, table sa baba */
+        flex-direction: column;   
         gap: 30px;
         align-items: center;
         width: 100%;
@@ -309,13 +309,13 @@ tr:hover{
 @media (max-width: 600px){
     body{
         align-items: flex-start;
-        padding-top: 110px;       /* espasyo para hindi matakpan ng logo ang title */
+        padding-top: 110px;       
         padding-bottom: 30px;
     }
 
     #logo-box{
         left: 50%;
-        transform: translateX(-50%);   /* logo sa gitna ng taas */
+        transform: translateX(-50%);   
         top: 10px;
     }
 
