@@ -1,3 +1,7 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
 <form method="POST">
     <div id="logo-box">
         <img id="logo" src="../logo.png">
@@ -140,7 +144,7 @@ body{
 #logo-box{
     position: absolute;
     top: 10px;
-    left: 200px;
+    left: clamp(10px, 10vw, 200px);
 
     display: flex;
     align-items: center;
@@ -150,7 +154,8 @@ body{
 }
 
 #logo{
-    width: 120px; 
+    width: clamp(70px, 15vw, 120px);
+    height: auto;
 }
 
 /* TITLE */
@@ -214,6 +219,7 @@ button:hover{
     width: 95%;
     max-height: 500px;
     overflow-y: auto;
+    overflow-x: auto;
     border-radius: 12px;
     background: white;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
@@ -354,4 +360,24 @@ td:nth-child(3){
     box-shadow: 0 10px 10px #f30606;
 }
 
+@media (max-width: 600px){
+    body{
+        padding-top: 90px;            /* espasyo para hindi matakpan ang title */
+    }
+
+    #logo-box{
+        left: 50%;
+        transform: translateX(-50%);  /* logo sa gitna ng taas */
+        top: 10px;
+    }
+
+    h1{
+        font-size: 22px;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        max-width: 250px;
+    }
+}
 </style>
