@@ -35,6 +35,7 @@ if(isset($_POST['login'])){
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
     integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -85,18 +86,19 @@ if(isset($_POST['login'])){
 }
 
 body{
-    height:100vh;
+    min-height: 100vh;
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    overflow-x: hidden;
     background: url('../background.jpg') no-repeat center center/cover;
 }
 
 /* container */
 #login-container{
     position:relative;
-    width:500px;
+    width:100%;
+    max-width: 500px; 
     padding:40px 25px;
     z-index: 10;
 
@@ -123,7 +125,8 @@ body{
 }
 
 #logo{
-    width:200px;
+     width: clamp(80px, 20vw, 200px);
+     height: auto;
 }
 
 /* title */
@@ -138,7 +141,8 @@ h1{
 
 /* inputs */
 #input-box{
-    width: 300px;
+    width: 100%;
+    max-width: 300px; 
     text-align:left;
     margin-bottom:15px;
 }
@@ -228,6 +232,28 @@ input:hover{
     color:#ffcc00;
     font-weight:600;
     font-size:14px;
+}
+
+@media (max-width: 600px){
+    body{
+        align-items: flex-start;
+        padding: 100px 15px 30px;    
+    }
+
+    #logo-box{
+        left: 50%;
+        transform: translateX(-50%); 
+        top: 10px;
+    }
+
+    h1{
+        font-size: 28px;
+    }
+
+    #buttons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
 
 </style>
