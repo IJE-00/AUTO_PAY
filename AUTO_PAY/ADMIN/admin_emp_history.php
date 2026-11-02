@@ -112,6 +112,10 @@ if(isset($_POST['reset'])){
 }
 ?>
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
 <div id="logo-box">
         <img id="logo" src="../logo.png">
     </div>
@@ -196,7 +200,7 @@ if(isset($_POST['reset'])){
 }
 
 body{
-    height: 100vh;
+    min-height: 100vh; 
     padding: 30px;
     background: url('../background.jpg') no-repeat center center/cover;
 }
@@ -205,7 +209,7 @@ body{
 #logo-box{
     position: absolute;
     top: 15px;
-    left: 365px;
+    left: clamp(10px, 25vw, 365px); 
 
     display: flex;
     align-items: center;
@@ -215,7 +219,8 @@ body{
 }
 
 #logo{
-    width: 120px; 
+    width: clamp(70px, 15vw, 120px); 
+    height: auto;
 }
 
 /* TITLE */
@@ -254,6 +259,7 @@ input[type="text"]{
 /* TABLE */
 table{
     width: 100%;
+    min-width: 1100px;
     border-collapse: collapse;
 }
 
@@ -370,5 +376,37 @@ td:nth-child(10)[style*="red"]{
     background-position: right center;
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 10px 10px #f30606;
+}
+
+@media (max-width: 600px){
+    body{
+        padding: 15px;
+        padding-top: 100px;          
+    }
+
+    #logo-box{
+        left: 50%;
+        transform: translateX(-50%); 
+        top: 10px;
+    }
+
+    h1{
+        font-size: 22px;
+    }
+
+    input[type="text"]{
+        width: 100%;
+        max-width: 250px;
+        margin-bottom: 8px;
+    }
+
+    #search, #show, #back, #del_all{
+        font-size: 16px;
+    }
+
+    #bots{
+        flex-wrap: wrap;             
+        gap: 10px;
+    }
 }
 </style>
