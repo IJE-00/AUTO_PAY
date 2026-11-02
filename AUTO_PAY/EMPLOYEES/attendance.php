@@ -78,6 +78,7 @@ $cycleCount = (($total - 1) % 15) + 1;
 
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -136,12 +137,13 @@ $cycleCount = (($total - 1) % 15) + 1;
 }
 
 body{
-    height:100vh;
+    min-height: 100vh; 
     display:flex;
     align-items:center;
     justify-content:center;
-    overflow:hidden;
+    overflow-x: hidden;  
     background: url('../background.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
 }
 
 /* dark overlay */
@@ -160,6 +162,7 @@ body::before{
 #container{
     display: flex;
     gap: 100px;
+    padding: 20px;
 }
 
 #box{
@@ -184,7 +187,8 @@ body::before{
 }
 
 #logo{
-    width: 200px; 
+    width: clamp(80px, 20vw, 200px);
+    height: auto; 
 }
 
 label{
@@ -197,7 +201,7 @@ label{
 
 h1{
     display: flex;
-    font-size: 60px;
+    font-size: clamp(30px, 6vw, 60px);
     font-family:Copperplate, "Copperplate Gothic Light", fantasy;
     background: linear-gradient(to right, #1865f3, #82a9ed);
     background-clip: text;
@@ -213,6 +217,9 @@ h1:hover{
 }
 
 .table-scroll{
+    width: 100%;
+    max-width: 600px;
+    overflow-x: auto; 
     max-height: 320px;
     overflow-y: auto;
     border-radius: 10px;
@@ -222,7 +229,8 @@ h1:hover{
 
 
 table{
-    width: 600px;
+    width: 100%;  
+    max-width: 600px;
     border-collapse: collapse;
     font-family:Copperplate, "Copperplate Gothic Light", fantasy;
     font-size: 14px;
@@ -289,5 +297,45 @@ tr:hover{
     transform:translateY(-5px);
 }
 
+@media (max-width: 1100px){
+    #container{
+        flex-direction: column;   
+        gap: 30px;
+        align-items: center;
+        width: 100%;
+    }
+}
 
+@media (max-width: 600px){
+    body{
+        align-items: flex-start;
+        padding-top: 110px;       
+        padding-bottom: 30px;
+    }
+
+    #logo-box{
+        left: 50%;
+        transform: translateX(-50%);   
+        top: 10px;
+    }
+
+    #box{
+        width: 100%;
+    }
+
+    #buttons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #bot{
+        height: 55px;
+        width: 110px;
+    }
+
+    th, td{
+        padding: 8px;
+        font-size: 12px;
+    }
+}
 </style>
