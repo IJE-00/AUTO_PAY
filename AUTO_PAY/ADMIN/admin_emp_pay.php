@@ -377,12 +377,12 @@ tr:hover{
 
 @media (max-width: 700px){
     body{
-        padding-top: 90px;           /* espasyo para sa logo */
+        padding-top: 90px;          
     }
 
     #header{
         left: 50%;
-        transform: translateX(-50%); /* logo sa gitna ng taas */
+        transform: translateX(-50%); 
     }
 
     h1{
@@ -390,7 +390,7 @@ tr:hover{
     }
 
     #container{
-        flex-direction: column;      /* employee box bababa sa form */
+        flex-direction: column;      
         align-items: center;
     }
 
@@ -406,11 +406,11 @@ tr:hover{
     }
 
     #row2, #row3, #row4, #row5{
-        flex-wrap: wrap;             /* bababa ang input at button kung masikip */
+        flex-wrap: wrap;             
     }
 
     label{
-        width: 100%;                 /* label sa ibabaw ng input */
+        width: 100%;                
         max-width: 100%;
     }
 
