@@ -105,6 +105,7 @@ if (isset($_POST['back'])) {
 ?>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" 
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -153,7 +154,7 @@ if (isset($_POST['back'])) {
         <p><?php echo $total_employees; ?></p>
     </div>
 </div>
-
+</form>
 
     <!-- SCROLLABLE TABLE -->
 <div class="table-scroll">
@@ -185,7 +186,7 @@ if (isset($_POST['back'])) {
             <?php } ?>
         </table>
     </div>
-</form>
+
 
 <style>
 *{
@@ -222,7 +223,7 @@ body{
     height: 150px;
     width: 200px;
     margin-top: 20px;
-    margin-left: 250px;
+    margin-left: clamp(20px, 8vw, 250px);
     background-image: linear-gradient(to right, #629dfa 0%, #c2e9fb 51%, #629dfa 100%);
     background-size: 200% auto;
     font-weight: bold;
@@ -262,7 +263,8 @@ h1{
 
 label{
     display: inline-block;
-    width: 150px;  
+    width: 150px;
+    max-width: 40%;   
     color: white;
     font-weight: bold;
     font-family: Copperplate, "Copperplate Gothic Light", fantasy;
@@ -275,13 +277,14 @@ input[type="text"]{
     border: 1px solid black;
     outline: none;
     width: 220px;
+    max-width: 100%;
     box-sizing: border-box;
 }
 /* LOGO */
 #header{
     position: absolute;
     top: 10px;
-    left: 275px;
+    left: clamp(10px, 20vw, 275px); 
 
     display: flex;
     align-items: center;
@@ -291,7 +294,8 @@ input[type="text"]{
 }
 
 #logo{
-    width: 100px; 
+    width: clamp(60px, 12vw, 100px);
+    height: auto; 
 }
 
 /* BUTTONS */
@@ -316,8 +320,8 @@ button:hover{
 }
 
 #bot{
-    margin-left:155px;
-    margin-bottom:20px;
+    margin-left: 0;                 
+    margin-bottom: 20px;
 }
 
 /* SCROLL TABLE */
@@ -368,5 +372,50 @@ tr:nth-child(even){
 
 tr:hover{
     background: #eaf0ff;
+}
+
+@media (max-width: 700px){
+    body{
+        padding-top: 90px;           /* espasyo para sa logo */
+    }
+
+    #header{
+        left: 50%;
+        transform: translateX(-50%); /* logo sa gitna ng taas */
+    }
+
+    h1{
+        font-size: 22px;
+    }
+
+    #container{
+        flex-direction: column;      /* employee box bababa sa form */
+        align-items: center;
+    }
+
+    #employee-count{
+        margin-left: 0;
+        margin-bottom: 20px;
+        width: 100%;
+        max-width: 250px;
+    }
+
+    #row2, #row3, #row4, #row5{
+        flex-wrap: wrap;             /* bababa ang input at button kung masikip */
+    }
+
+    label{
+        width: 100%;                 /* label sa ibabaw ng input */
+        max-width: 100%;
+    }
+
+    input[type="text"]{
+        flex: 1;
+        min-width: 0;
+    }
+
+    #bot{
+        text-align: center;
+    }
 }
 </style>
