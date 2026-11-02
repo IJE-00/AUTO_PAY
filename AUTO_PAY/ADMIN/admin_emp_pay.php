@@ -226,7 +226,7 @@ body{
     background-image: linear-gradient(to right, #629dfa 0%, #c2e9fb 51%, #629dfa 100%);
     background-size: 200% auto;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 15px;
     border: solid 2px whitesmoke;
     box-shadow: 0 0 20px #eeeeee;
 }
