@@ -1,3 +1,15 @@
+##  Automated Payroll Processing System
+How to use Automated Payroll Processing System:
+step 1 - Create a account. press register to create new account. Note: Contact the admin/manager to DEACTIVATE your account
+step 2 - Once you been activate your account, Login your account
+step 3 - Click the attendance to have a record on that day.
+step 4 - in payout, which is 15 days payout you can. you can choose if without deduction or with deduction. Then you can press the recieve and get the receipt.
+
+## Purpose
+Automated Payroll Processing System is designed to eliminate manual calculation errors and make salary management fast and efficient. Built with a secure PHP and MySQL backend and a modern interface, it helps administrators easily compute earnings and handle employee records. The system operates in two ways: with deductions and without deductions. Running it with deductions calculates an employee's final take-home (Net Pay) by subtracting mandatory government contributions from their total earnings. Running it without deductions shows the raw Gross Pay.
+
+ 
+
 ## Architecture/Tech Stack Section:
 The Automated Payroll Processing System was developed using the following technologies:
 
